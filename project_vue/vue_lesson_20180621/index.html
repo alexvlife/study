@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Vue</title>
+        <link rel="stylesheet" href="css/reset.css">
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="css/tooltip.css">
+        <!-- <script src="js/vendors/vue.js"></script> -->
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+        <!-- must place this line after vue.js -->
+        <script src="js/vue-clipboard.js"></script>
+        <script src="https://unpkg.com/v-tooltip"></script>
+   
+    </head>
+
+    <body>
+
+        <section id="app" class="wrapper">
+
+            <header class="list-header-wrapper">
+                <h2 class="list-header">Список пользователей</h2>
+                <div class="list-header-data">
+                    <p class="header-info">(всего - <span v-text="userListLength"></span>)</p>
+                    <button 
+                        v-on:click="show = !show"
+                        v-tooltip="message"
+                        class="header-btn">
+                            {{ btnText }}
+                    </button>
+                </div>
+            </header>
+            
+            <!-- Таблица со списком пользователей -->
+            <div class="user-list">
+
+                <div class="user-list__head">
+                    <div class="user-list__row">
+                        <div class="user-list__cell">
+                            Аватар
+                        </div>
+                        <div class="user-list__cell">
+                            Имя
+                        </div>
+                        <div class="user-list__cell">
+                            Фамилия
+                        </div>
+                        <div class="user-list__cell">
+                            Отчество
+                        </div>
+                    </div>
+                </div>
+                
+                <transition name="fade"> <!-- Обертка для плавного появления/скрытия таблицы. -->
+                    <div v-if="show" class="user-list__main">
+                        <div v-for="item in userList" class="user-list__row">
+                            <div v-bind:class="item.img ? 'avatar' : 'no-avatar'" class="user-list__cell">
+                                <span v-if="!item.img">
+                                    Нет аватара
+                                </span>
+                                <img v-else v-bind:src="item.img" height="60">
+                            </div>
+                            <div class="user-list__cell">
+                                {{ item.name | capitalize }}
+                            </div>
+                            <div class="user-list__cell">
+                                {{ item.surname | capitalize }}
+                            </div>
+                            <div class="user-list__cell">
+                                {{ item.lastname | capitalize }}
+                            </div>
+                        </div>
+                    </div>
+                </transition>	
+
+            </div>
+
+        </section>
+
+        <script src="js/script.js"></script>
+        
+    </body>
+</html>
