@@ -11,8 +11,6 @@
         <link rel="stylesheet" href="css/tooltip.css">
         <!-- <script src="js/vendors/vue.js"></script> -->
         <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
-        <!-- must place this line after vue.js -->
-        <script src="js/vue-clipboard.js"></script>
         <script src="https://unpkg.com/v-tooltip"></script>
    
     </head>
@@ -24,9 +22,10 @@
             <header class="list-header-wrapper">
                 <h2 class="list-header">Список пользователей</h2>
                 <div class="list-header-data">
-                    <p class="header-info">(всего - <span v-text="userListLength"></span>)</p>
-                    <button 
-                        v-on:click="show = !show"
+                    <p class="header-info">(всего - {{ userListLength }})</p>
+                    <button
+                        type="button"
+                        v-on:click="changeShowStatus"
                         v-tooltip="message"
                         class="header-btn">
                             {{ btnText }}
@@ -56,7 +55,7 @@
                 
                 <transition name="fade"> <!-- Обертка для плавного появления/скрытия таблицы. -->
                     <div v-if="show" class="user-list__main">
-                        <div v-for="item in userList" class="user-list__row">
+                        <div v-for="item in userList" v-bind:key="item.id" class="user-list__row">
                             <div v-bind:class="item.img ? 'avatar' : 'no-avatar'" class="user-list__cell">
                                 <span v-if="!item.img">
                                     Нет аватара
