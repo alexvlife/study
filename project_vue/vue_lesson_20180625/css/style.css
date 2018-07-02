@@ -1,0 +1,86 @@
+.no-avatar {
+	color: rgb(255, 0, 0);
+}
+
+.wrapper {
+	width: 70%;
+	margin: 30px auto;
+}
+
+.list-header-wrapper {
+	padding: 1rem 0;
+}
+
+.list-header {
+	padding-bottom: 1rem;
+	font-size: 1.5rem;
+}
+
+.list-header-data {
+	display: flex;
+	align-items: center;
+}
+
+.header-btn:hover {
+	background-color: rgb(118, 149, 207);
+}
+
+.header-btn:active {
+	background-color: rgb(170, 194, 238);
+}
+
+.user-list {
+	display: table;
+	width: 100%;
+	margin-top: 1.5rem;
+	text-align: center;
+}
+
+.user-list__head {
+	display: table-header-group;
+	background-color: lightslategrey;
+	color: #fff;
+}
+
+.user-list__main {
+	display: table-row-group;
+	background-color: rgb(225, 233, 241);
+}
+
+.user-list__row {
+	display: table-row;
+}
+
+.user-list__cell {
+	display: table-cell;
+	width: 25%;
+	padding: 1rem;
+	border: 1px solid #fff;
+	vertical-align: middle;
+}
+
+.header-info,
+.header-btn {
+	float: left;
+}
+
+.header-btn {
+	width: 220px;	
+	margin-left: 1.5rem;
+	padding: 0.2rem 0rem;
+	border: 2px solid rgb(62, 104, 182);
+	border-radius: 5px;
+	outline: none;
+	color: #fff;
+	background-color: rgb(62, 104, 182);
+	transition: background 0.4s ease 0s;
+}
+
+/* Vue */
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .5s;
+}
+
+.fade-enter, .fade-leave-to /* .fade-leave-active до версии 2.1.8 */ {
+  opacity: 0;
+}
